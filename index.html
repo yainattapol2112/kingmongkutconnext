@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>หลวงพ่อสำเร็จศักดิ์สิทธิ์ รุ่นปราบมาร - พุทธศิลป์ระดับมาสเตอร์พีซ</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Noto+Serif+Thai:wght@100..900&family=Prompt:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ทอง-หลัก: #bf953f;
+      --ทอง-อ่อน: #fcf6ba;
+      --ทอง-เข้ม: #aa771c;
+      --ไล่เฉดทอง: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 70%, #aa771c 100%);
+      --พื้นหลังมืด: #030303;
+      --สีแก้ว: rgba(255, 255, 255, 0.02);
+      --ขอบทองจาง: rgba(191, 149, 63, 0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: var(--พื้นหลังมืด);
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ตกแต่งตัวอักษรทอง */
+    .ข้อความทอง {
+      background: var(--ไล่เฉดทอง);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* เมนูบาร์แบบกระจกใส */
+    nav {
+      position: fixed;
+      top: 0; width: 100%; z-index: 1000;
+      padding: 1.5rem 8%;
+      background: rgba(3, 3, 3, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--ขอบทองจาง);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .โลโก้ {
+      font-family: 'Noto Serif Thai', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* ฮีโร่เซกชันแบบมีมิติ */
+    .ฮีโร่ {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 8% 80px;
+      background: radial-gradient(circle at 70% 30%, rgba(191, 149, 63, 0.15), transparent 50%);
+    }
+
+    .กริดฮีโร่ {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center;
+    }
+
+    .เนื้อหาฮีโร่ h1 {
+      font-family: 'Noto Serif Thai', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.1; margin-bottom: 30px;
+      font-weight: 900;
+    }
+
+    .เนื้อหาฮีโร่ p {
+      font-size: 1.25rem; color: #999; margin-bottom: 50px;
+      font-weight: 300; letter-spacing: 0.5px;
+    }
+
+    .กรอบรูปฮีโร่ {
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .วงรัศมี {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%; height: 140%;
+      background: radial-gradient(circle, rgba(191, 149, 63, 0.1) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    #สไลเดอร์หลัก {
+      width: 100%; border-radius: 50px;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+      border: 1px solid var(--ขอบทองจาง);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* ปุ่มพรีเมียม */
+    .ปุ่มทอง {
+      padding: 18px 50px;
+      border-radius: 100px;
+      background: var(--ไล่เฉดทอง);
+      color: #000; font-weight: 700;
+      text-decoration: none; display: inline-block;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .ปุ่มทอง:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(191, 149, 63, 0.3);
+    }
+
+    /* ส่วนรายการสินค้าแบบสมมาตร */
+    .ส่วนเนื้อหา { padding: 120px 8%; }
+    
+    .หัวข้อส่วน { text-align: center; margin-bottom: 90px; }
+
+    .กริดรายการ {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .กล่องรายการ {
+      background: var(--สีแก้ว);
+      border: 1px solid var(--ขอบทองจาง);
+      border-radius: 45px;
+      padding: 60px 40px;
+      backdrop-filter: blur(15px);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; position: relative; overflow: hidden;
+      min-height: 720px;
+    }
+
+    /* แสง Aura เมื่อ Hover */
+    .กล่องรายการ::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(191, 149, 63, 0.08) 0%, transparent 50%);
+      opacity: 0; transition: 0.6s;
+    }
+
+    .กล่องรายการ:hover {
+      transform: translateY(-20px);
+      border-color: var(--ทอง-หลัก);
+      background: rgba(191, 149, 63, 0.03);
+    }
+
+    .กล่องรายการ:hover::before { opacity: 1; }
+
+    .กล่องรายการ img {
+      width: 100%; height: 300px; object-fit: contain;
+      margin-bottom: 40px; z-index: 1;
+      filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+      transition: 0.6s;
+    }
+
+    .กล่องรายการ:hover img { transform: scale(1.1) rotate(2deg); }
+
+    .ข้อมูลรายการ { z-index: 1; margin-top: auto; }
+
+    .ป้ายประกาศ {
+      display: inline-block; padding: 6px 18px;
+      background: rgba(191, 149, 63, 0.1);
+      border: 1px solid var(--ทอง-หลัก);
+      border-radius: 30px; color: var(--ทอง-อ่อน);
+      font-size: 12px; margin-bottom: 20px;
+      font-weight: 500; letter-spacing: 1px;
+    }
+
+    .จำนวนสร้าง {
+      font-size: 1.3rem; color: var(--ทอง-อ่อน);
+      margin-bottom: 15px; font-weight: 700;
+      font-family: 'Noto Serif Thai', serif;
+    }
+
+    .รายละเอียด {
+      font-size: 0.95rem; color: #999;
+      line-height: 1.8; font-weight: 300;
+    }
+
+    /* แอนิเมชั่น */
+    .เลื่อนปรากฏ { opacity: 0; transform: translateY(50px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .เลื่อนปรากฏ.active { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1200px) {
+      .กริดรายการ { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 850px) {
+      .กริดฮีโร่ { grid-template-columns: 1fr; text-align: center; }
+      .กรอบรูปฮีโร่ { order: -1; }
+      .กริดรายการ { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="โลโก้ ข้อความทอง">รุ่นปราบมาร</div>
+    <a href="#" class="ปุ่มทอง" style="padding: 12px 30px; font-size: 0.9rem;">จองบูชาด่วน</a>
+  </nav>
+
+  <section class="ฮีโร่">
+    <div class="กริดฮีโร่">
+      <div class="เนื้อหาฮีโร่">
+        <span class="ป้ายประกาศ" style="font-size: 14px; padding: 10px 25px;">สุดยอดวัตถุมงคลแห่งทศวรรษ</span>
+        <h1 class="ข้อความทอง">หลวงพ่อสำเร็จ<br>ศักดิ์สิทธิ์</h1>
+        <p>
+          บทพิสูจน์แห่งความศรัทธา "รุ่นปราบมาร" รังสรรค์ผ่านจิตวิญญาณช่างชั้นสูง 
+          ผสานชนวนมวลสารศักดิ์สิทธิ์หนึ่งเดียวในแผ่นดิน เพื่อชัยชนะที่ยิ่งใหญ่เหนือทุกอุปสรรค
+        </p>
+        <div style="display: flex; gap: 20px; justify-content: start;">
+          <a href="#explore" class="ปุ่มทอง">รับชมมวลสารและรายการสร้าง</a>
+        </div>
+      </div>
+      <div class="กรอบรูปฮีโร่">
+        <div class="วงรัศมี"></div>
+        <img id="สไลเดอร์หลัก" src="https://store.eventthai.com/exp228/manage/image/6a03ea0a77cbe_1778641418.jpg" alt="วัตถุมงคลมาสเตอร์พีซ">
+      </div>
+    </div>
+  </section>
+
+  <section id="explore" class="ส่วนเนื้อหา">
+    <div class="หัวข้อส่วน เลื่อนปรากฏ">
+      <h2 class="ข้อความทอง" style="font-family:'Noto Serif Thai'; font-size: 3.5rem;">คอลเลกชันระดับตำนาน</h2>
+      <p style="color: #666; margin-top: 20px; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+        ทุกองค์คือประวัติศาสตร์ ทุกเหรียญคือพุทธศิลป์ที่ประเมินค่าไม่ได้ จัดสร้างในจำนวนจำกัดสูงสุดสำหรับผู้มีบารมีเท่านั้น
+      </p>
+    </div>
+    
+    <div class="กริดรายการ">
+      <!-- ชิ้นที่ 1 -->
+      <div class="กล่องรายการ เลื่อนปรากฏ">
+        <img src="https://store.eventthai.com/exp228/manage/image/6a03ea0a77cbe_1778641418.jpg" alt="เหรียญรูปไข่">
+        <div class="ข้อมูลรายการ">
+          <span class="ป้ายประกาศ">งานพุทธศิลป์ลงยา</span>
+          <h3 class="ข้อความทอง" style="font-size: 1.6rem; margin-bottom: 10px;">เหรียญรูปไข่ลงยาแดง</h3>
+          <p class="จำนวนสร้าง">จำนวนสร้าง ๒๑ องค์</p>
+          <p class="รายละเอียด">
+            ที่สุดแห่งความงามด้วยเทคนิคการลงยาเย็นราชาวดีสีแดงเข้มมงคล 
+            แกะสลักลวดลายกนกอย่างอ่อนช้อย เสริมส่งอำนาจบารมีและชัยชนะ
+          </p>
+        </div>
+      </div>
+
+      <!-- ชิ้นที่ 2 -->
+      <div class="กล่องรายการ เลื่อนปรากฏ">
+        <img src="https://store.eventthai.com/exp228/manage/image/6a03ea00ea91f_1778641408.jpg" alt="พระกริ่ง">
+        <div class="ข้อมูลรายการ">
+          <span class="ป้ายประกาศ">หล่อโบราณดั้งเดิม</span>
+          <h3 class="ข้อความทอง" style="font-size: 1.6rem; margin-bottom: 10px;">พระกริ่งปราบมาร</h3>
+          <p class="จำนวนสร้าง">จำนวนสร้าง ๑๑ องค์</p>
+          <p class="รายละเอียด">
+            พุทธลักษณะที่เข้มขลัง หล่อหลอมจากแผ่นจารยันต์ศักดิ์สิทธิ์ ๑๐๘ คณาจารย์ 
+            เสียงกริ่งกังวานดุจสวรรค์ประทานพร ขจัดสิ่งชั่วร้ายทั้งปวง
+          </p>
+        </div>
+      </div>
+
+      <!-- ชิ้นที่ 3 -->
+      <div class="กล่องรายการ เลื่อนปรากฏ">
+        <img src="https://store.eventthai.com/exp228/manage/image/6a03ea1171550_1778641425.jpg" alt="เหรียญกลม">
+        <div class="ข้อมูลรายการ">
+          <span class="ป้ายประกาศ">เนื้อเงินแท้บริสุทธิ์</span>
+          <h3 class="ข้อความทอง" style="font-size: 1.6rem; margin-bottom: 10px;">เหรียญกลมพูนสุข</h3>
+          <p class="จำนวนสร้าง">จำนวนสร้าง ๑๔ องค์</p>
+          <p class="รายละเอียด">
+            ตัวแทนแห่งความสมบูรณ์พูนสุข รูปทรงกลมไร้จุดสิ้นสุดสื่อถึงเงินทองที่ไหลมาเทมาไม่ขาดสาย 
+            เนื้อเงินขัดเงาระดับพรีเมียม สวยสะดุดตา
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 120px 5% 60px; border-top: 1px solid var(--ขอบทองจาง); background: linear-gradient(to bottom, #030303, #0a0a0a);">
+    <div class="โลโก้ ข้อความทอง" style="margin-bottom: 30px; font-size: 2.2rem;">รุ่นปราบมาร</div>
+    <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; color: #888; font-weight: 200;">
+        <span>พิธีพุทธาภิเษก ๙ วาระ</span>
+        <span>|</span>
+        <span>มวลสารศักดิ์สิทธิ์ทั่วประเทศ</span>
+        <span>|</span>
+        <span>ใบรับรองจากสมาคม</span>
+    </div>
+    <p style="color: #444; font-size: 0.85rem; letter-spacing: 2px;">
+      © พุทธศักราช ๒๕๖๙ LUANG PHOR SAMRET SAKSIT - ปราบมารพุทธศิลป์
+    </p>
+  </footer>
+
+  <script>
+    // การเปลี่ยนรูปภาพแบบ Cross-fade ที่ลื่นไหลขึ้น
+    const รูปภาพ = [
+      'https://store.eventthai.com/exp228/manage/image/6a03ea0a77cbe_1778641418.jpg',
+      'https://store.eventthai.com/exp228/manage/image/6a03ea00ea91f_1778641408.jpg',
+      'https://store.eventthai.com/exp228/manage/image/6a03ea1171550_1778641425.jpg'
+    ];
+    let index = 0;
+    const imgEl = document.getElementById('สไลเดอร์หลัก');
+
+    setInterval(() => {
+      imgEl.style.opacity = '0';
+      imgEl.style.transform = 'translateY(20px) scale(0.95)';
+      
+      setTimeout(() => {
+        index = (index + 1) % รูปภาพ.length;
+        imgEl.src = รูปภาพ[index];
+        imgEl.style.opacity = '1';
+        imgEl.style.transform = 'translateY(0) scale(1)';
+      }, 800);
+    }, 15000);
+
+    // Scroll Observer สำหรับแอนิเมชั่นตอนเลื่อนดู
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.เลื่อนปรากฏ').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
