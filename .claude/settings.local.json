@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v chromium-cli)",
+      "Bash(command -v npx)",
+      "Read(//c/Users/yai21/.claude/**)",
+      "Read(//d//**)",
+      "PowerShell(Start-Process \"http://localhost:8091/index.php\")",
+      "Bash(python3 -c ' *)",
+      "Bash(php -r ' *)",
+      "Bash(node -e ' *)",
+      "Bash(curl -s http://localhost:8091/index.php)",
+      "Bash(curl -sf http://localhost:8091/assets/css/style.css)",
+      "Bash(curl -sf http://localhost:8091/assets/js/main.js)",
+      "Bash(curl -s http://localhost:8091/index.php -o /tmp/rendered.html)",
+      "Bash(php -l index.php)",
+      "Bash(curl -s http://localhost:8091/index.php -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8091/index.php)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/Microsoft/Edge/Application/**)",
+      "Read(//c/Users/yai21/AppData/Local/Temp/claude/**)",
+      "Bash(sed -n '105,168p' index.php)",
+      "Read(//tmp/**)",
+      "Read(//d/tmp/**)",
+      "Bash(curl -sI \"http://localhost:8091/assets/files/file%20e%20brochure%20King%20Mongkut.pdf\")",
+      "Bash(awk '/<div class=\"course-calendar\">/,/<\\\\/div>[ \\\\t]*$/{print}' index.php)",
+      "Bash(awk 'NR==174{print; printf \"\\\\t\\\\t\\\\t\\\\t<p class=\\\\\"cal-legend\\\\\"><span class=\\\\\"cal-legend-dot\\\\\" aria-hidden=\\\\\"true\\\\\"></span> วันเรียนในหลักสูตร</p>\\\\n\"; next} {print}' index.php)",
+      "Bash(mv index.php.tmp index.php)",
+      "Bash(curl -sI \"http://localhost:8091/assets/images/icon.png\")"
+    ]
+  }
+}
