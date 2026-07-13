@@ -25,7 +25,20 @@
       "Bash(awk '/<div class=\"course-calendar\">/,/<\\\\/div>[ \\\\t]*$/{print}' index.php)",
       "Bash(awk 'NR==174{print; printf \"\\\\t\\\\t\\\\t\\\\t<p class=\\\\\"cal-legend\\\\\"><span class=\\\\\"cal-legend-dot\\\\\" aria-hidden=\\\\\"true\\\\\"></span> วันเรียนในหลักสูตร</p>\\\\n\"; next} {print}' index.php)",
       "Bash(mv index.php.tmp index.php)",
-      "Bash(curl -sI \"http://localhost:8091/assets/images/icon.png\")"
+      "Bash(curl -sI \"http://localhost:8091/assets/images/icon.png\")",
+      "Bash(powershell -Command \"Get-Service -Name Apache* -ErrorAction SilentlyContinue | Select Name,Status; netstat -ano | findstr ':80 ' | Select-String LISTENING\")",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(python -c \"import playwright\")",
+      "Bash(pip show *)",
+      "Bash(where.exe chromium-cli *)",
+      "Bash(pip install *)",
+      "Bash(python -c \"import playwright; print\\('ok'\\)\")",
+      "Bash(python -m playwright install chromium)",
+      "Bash(python shot.py)",
+      "Bash(python shot2.py)",
+      "Bash(python shot3.py)",
+      "Bash(python shot4.py)"
     ]
   }
 }
