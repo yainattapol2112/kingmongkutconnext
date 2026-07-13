@@ -247,7 +247,7 @@ a { color: inherit; }
 }
 .section-title-wrap {
   text-align: center;
-  margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
+  /* margin-bottom: clamp(1.4rem, 3vw, 2.2rem); */
 }
 .section-title-wrap .section-title { margin-bottom: .6rem; }
 .section-accent {
@@ -356,6 +356,10 @@ a { color: inherit; }
   gap: 1.4rem;
 }
 .hero-actions .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 320px;
+  text-align: center;
   padding: clamp(.85rem, 2.6vw, 1.26rem) clamp(1.6rem, 4.6vw, 2.52rem);
   font-size: clamp(1.05rem, 3vw, 1.66rem);
 }
@@ -797,7 +801,7 @@ a { color: inherit; }
   margin: 0;
   color: #7a5535;
   line-height: 1.8;
-  font-size: clamp(.92rem, 1.6vw, 1.05rem);
+  font-size: clamp(.92rem, 1.6vw, 1.1rem);
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -1005,7 +1009,25 @@ a { color: inherit; }
     justify-content: center;
     row-gap: .35rem;
   }
-  .hero { min-height: calc(100dvh - 130px); }
+  .hero { min-height: unset; height: auto; }
+  .hero.section { padding: 0; }
+  .hero-content { height: auto; }
+  .hero-poster-frame { height: auto; }
+  .hero-poster {
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-actions .btn {
+    max-width: none;
+    width: 100%;
+  }
   .executive-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
   .curriculum-body { grid-template-columns: 1fr; }
@@ -1021,7 +1043,7 @@ a { color: inherit; }
   .site-name { font-size: .84rem; }
   .nav-link { font-size: .76rem; }
   .btn { font-size: .86rem; padding: .62rem 1rem; }
-  .hero { min-height: calc(100dvh - 146px); }
+  .hero { min-height: unset; }
   .footer-grid { padding: 1.5rem 0; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
   .price-tag { font-size: clamp(1.8rem, 8vw, 2.4rem); }
